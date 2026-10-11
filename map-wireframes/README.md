@@ -4,7 +4,7 @@
 
 ## 正本：draw.io
 
-`assets/m-ap_current-vs-update.drawio` が正本です（写真URL埋め込み・3ページ）。
+`assets/m-ap_current-vs-update.drawio` が正本です（**現行HOMEの実写真URL**埋め込み・3ページ）。
 
 - [diagrams.net で開く（直リンク）](https://app.diagrams.net/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhiroyuki0217-lgtm%2Fcursor-slack-starter%2Fcursor%2Fmap-site-wireframes-35bf%2Fmap-wireframes%2Fassets%2Fm-ap_current-vs-update.drawio)
 - Slack: https://m-aphq.slack.com/files/U0C3M4VLLJ0/F0C7Y27TP55/m-ap_current-vs-update.drawio
@@ -24,7 +24,8 @@
 | `assets/m-ap_current-vs-update.drawio` | **正本** 左右比較WF（写真入り） |
 | `assets/m-ap_current-vs-update_photos.drawio` | 同上の別名コピー |
 | `index.html` | 左右比較の閲覧用HTML |
-| `assets/img*.jpg` | 現行サイトから採取した写真 |
+| `assets/home/` | 現行HOMEから採取した実写真（ヒーロー・立ち位置・BEFORE/AFTER・ギャラリー） |
+| `assets/img*.jpg` | 同上の互換エイリアス |
 
 ## 更新案の4点
 
