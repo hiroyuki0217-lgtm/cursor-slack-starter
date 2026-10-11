@@ -1,0 +1,28 @@
+---
+description: Grok Bot と同時に呼ばれたとき、Cursor はコード担当に絞り、週次枠を食う再調査をしない
+alwaysApply: true
+---
+
+# Cursor がコードを受け持つ
+
+Grok Bot（mari）とこの Cloud Agent が同じ依頼に乗っているとき、実装担当は Cursor 一つにする。受付、判断、必要なレビューは Grok Bot に残す。
+
+## 受け持つもの
+
+- リポジトリの調査、コード修正、テスト、プルリクエスト
+- 渡された差分、対象、完了条件、未確認点だけを読む
+
+## 受け持たないもの
+
+- Grok Bot がすでに照合した一次資料や受付判断を、最初からやり直さない
+- 同じ実装を Grok Bot のコンピュータで並行して始めない。先に着手した成果へ接続する
+- トークン対策として、S01〜S05 の固定本文、mari-source-handoff、Routine、全 Bot 配布は作り直さない
+- On-demand の有効化、追加課金、認証、権限は変更しない
+
+## 利用枠
+
+- モデルは Cursor Models（Grok または Composer）のままにする。Auto や他社モデルへ切り替えない
+- 利用枠で止まったら、その状態を返して止まる。課金やモデルの自動変更で回避しない
+- 進捗の往復で Grok Bot を起動しない。返すのは差分、検証結果、未確認点だけ
+
+根拠は Grok Bot の週次枠、Cloud Agent への委任、Slack の `@Cursor`、Cursor Models と Other Models の分離。数値の削減率は未測定なので作らない。
