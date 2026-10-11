@@ -2,17 +2,28 @@
 
 現行本番 [https://m-ap.net/](https://m-ap.net/) を正本にした左右比較ワイヤーです。全面刷新ではなく、2026-10-10 Slack方針どおり「いまのホームページをベースにチューニング」します。
 
-## 見る
+## 正本：draw.io
 
-ローカルで `map-wireframes/index.html` を開く。
+`assets/m-ap_current-vs-update.drawio` が正本です（写真URL埋め込み・3ページ）。
 
-## 含まれるもの
+- [diagrams.net で開く](https://app.diagrams.net/) → Open Existing Diagram でこのファイルを選択
+- Slack共有ファイル: https://m-aphq.slack.com/files/U0C3M4VLLJ0/F0C7Y27TP55/m-ap_current-vs-update.drawio
+
+### ページ
+1. `01_トップ比較` — 左＝現サイト／右＝更新案（写真入り）
+2. `02_サイト構成比較`
+3. `03_下層ページ変更比較`
+
+## 補助
+
+ローカルで `map-wireframes/index.html` も閲覧可。
 
 | ファイル | 内容 |
 | --- | --- |
-| `index.html` | 左右比較の閲覧用HTML（トップ／構成／下層） |
-| `assets/m-ap_current-vs-update.drawio` | Slack回収の draw.io（3ページ） |
-| `assets/img*.jpg` | 現行サイトから採取した写真（配置確認用） |
+| `assets/m-ap_current-vs-update.drawio` | **正本** 左右比較WF（写真入り） |
+| `assets/m-ap_current-vs-update_photos.drawio` | 同上の別名コピー |
+| `index.html` | 左右比較の閲覧用HTML |
+| `assets/img*.jpg` | 現行サイトから採取した写真 |
 
 ## 更新案の4点
 
