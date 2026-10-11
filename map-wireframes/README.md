@@ -6,8 +6,9 @@
 
 `assets/m-ap_current-vs-update.drawio` が正本です（写真URL埋め込み・3ページ）。
 
-- [diagrams.net で開く](https://app.diagrams.net/) → Open Existing Diagram でこのファイルを選択
-- Slack共有ファイル: https://m-aphq.slack.com/files/U0C3M4VLLJ0/F0C7Y27TP55/m-ap_current-vs-update.drawio
+- [diagrams.net で開く（直リンク）](https://app.diagrams.net/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fhiroyuki0217-lgtm%2Fcursor-slack-starter%2Fcursor%2Fmap-site-wireframes-35bf%2Fmap-wireframes%2Fassets%2Fm-ap_current-vs-update.drawio)
+- Slack: https://m-aphq.slack.com/files/U0C3M4VLLJ0/F0C7Y27TP55/m-ap_current-vs-update.drawio
+- Driveメモ: https://drive.google.com/drive/folders/1PdZnvQDy_EX6X8oKSHR1tdLXjwxoQN_d
 
 ### ページ
 1. `01_トップ比較` — 左＝現サイト／右＝更新案（写真入り）
