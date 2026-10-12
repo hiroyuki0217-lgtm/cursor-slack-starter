@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>m-ap.net｜現サイト vs チューニング案（WF）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #253741;
+      --muted: #66747a;
+      --line: #ccd1d2;
+      --bg: #f7f6f3;
+      --panel: #ffffff;
+      --keep: #f3f4f2;
+      --add: #eaf3fa;
+      --add-line: #608eb0;
+      --change: #fff1e3;
+      --change-line: #c88c4a;
+      --cta: #253d4a;
+      --photo: #e8ebe8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #e8efe9 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #e7eef3 0%, transparent 50%),
+        var(--bg);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 32px 20px 80px; }
+    header.hero {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 28px;
+      animation: rise 700ms ease both;
+    }
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+    .eyebrow { color: var(--muted); font-size: 0.92rem; margin: 0; }
+    h1 { font-size: 1.35rem; font-weight: 700; margin: 0; }
+    .lede { max-width: 62ch; color: var(--muted); margin: 0; }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 8px;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--keep);
+      padding: 8px 12px;
+      font-size: 0.86rem;
+    }
+    .chip.add { background: var(--add); border-color: var(--add-line); }
+    .chip.change { background: var(--change); border-color: var(--change-line); }
+    nav.tabs {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      position: sticky; top: 0; z-index: 5;
+      background: color-mix(in srgb, var(--bg) 88%, white);
+      backdrop-filter: blur(8px);
+      padding: 12px 0;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    nav.tabs a {
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+    nav.tabs a:hover { border-color: var(--ink); }
+    section.page {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 22px;
+      margin-bottom: 28px;
+      animation: rise 800ms ease both;
+    }
+    section.page h2 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+    .note { color: var(--muted); font-size: 0.92rem; margin: 0 0 18px; }
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 900px) {
+      .cols { grid-template-columns: 1fr; }
+    }
+    .col h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+    .block {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .block.keep { background: var(--keep); }
+    .block.add { background: var(--add); border-color: var(--add-line); }
+    .block.change { background: var(--change); border-color: var(--change-line); }
+    .block .label {
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .block .title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 6px;
+    }
+    .block p { margin: 0; font-size: 0.92rem; }
+    .photo {
+      background: var(--photo);
+      border: 1px solid #c6ccca;
+      min-height: 120px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 8px 0;
+      overflow: hidden;
+    }
+    .photo img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--cta);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+    }
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    @media (max-width: 700px) {
+      .grid3 { grid-template-columns: 1fr; }
+    }
+    .links { margin-top: 18px; font-size: 0.9rem; color: var(--muted); }
+    .links a { color: var(--ink); }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="eyebrow">正本：https://m-ap.net/ ／ 方針：現行ベースのチューニング（未公開）</p>
+      <p class="brand">m-ap</p>
+      <h1>現サイト vs 更新案｜ワイヤー比較</h1>
+      <p class="lede">
+        Slackで進めていた左右比較（左＝現サイト／右＝更新案）を、ブラウザで見られる形に再構成しました。
+        灰＝維持、青＝追加・見せ方、橙＝文言・事実の変更。本番反映は別承認です。
+      </p>
+      <div class="legend">
+        <span class="chip">灰：現状・維持</span>
+        <span class="chip add">青：追加・見せ方</span>
+        <span class="chip change">橙：文言・事実</span>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <a href="#top">01 トップ</a>
+      <a href="#ia">02 サイト構成</a>
+      <a href="#sub">03 下層変更</a>
+      <a href="#assets">元ファイル</a>
+    </nav>
+
+    <section class="page" id="top">
+      <h2>01｜トップページのフレーム比較</h2>
+      <p class="note">写真はすべて現行HOME（https://m-ap.net/）から採取。ヒーロー骨格は維持し、立ち位置の短い説明と自邸リンク文言だけを調整。</p>
+      <div class="cols">
+        <div class="col">
+          <h3>現サイト｜m-ap.net</h3>
+          <div class="block keep">
+            <div class="label">00 ヘッダー</div>
+            <p><img src="assets/home/logo.png" alt="m-ap" style="height:28px;width:auto;display:block;margin-bottom:8px" />相談・料金・自邸・実績・ABOUT・FAQ・初回相談</p>
+          </div>
+          <div class="block keep">
+            <div class="label">01 メイン写真（現行HOMEヒーロー）</div>
+            <div class="photo"><img src="assets/home/photo-1-scaled.jpg" alt="現行ヒーロー写真" style="height:220px" /></div>
+            <p class="title">好きの「かたち」が見えてくる</p>
+            <p>中古マンション購入・リノベーションの相談</p>
+          </div>
+          <div class="block keep">
+            <div class="label">02 住宅相談の説明</div>
+            <p class="title">買う前に、物件・予算・リノベを一緒に整理する。</p>
+            <a class="cta" href="https://m-ap.net/contact/">無料の初回相談を申し込む</a>
+          </div>
+          <div class="block keep">
+            <div class="label">06 立ち位置の写真（現行HOME）</div>
+            <div class="photo"><img src="assets/home/photo-44-scaled-e1774107873633.jpg" alt="立ち位置" style="height:200px" /></div>
+          </div>
+          <div class="block keep">
+            <div class="label">09 自邸の写真と記録（現行HOMEの並びに準拠）</div>
+            <div class="grid3">
+              <div class="photo"><img src="assets/home/IMG_0961-1-e1774086315763.jpg" alt="BEFORE / 解体後" /></div>
+              <div class="photo"><img src="assets/home/photo-8-scaled.jpg" alt="AFTER / 暮らし" /></div>
+              <div class="photo"><img src="assets/home/photo-13-scaled.jpg" alt="廊下" /></div>
+            </div>
+            <div class="grid3" style="margin-top:8px">
+              <div class="photo"><img src="assets/home/photo-30-scaled.jpg" alt="棚・道具" /></div>
+              <div class="photo"><img src="assets/home/photo-70-scaled.jpg" alt="窓辺" /></div>
+              <div class="photo"><img src="assets/home/photo-84-scaled.jpg" alt="コラム寄り" /></div>
+            </div>
+            <a class="cta" href="https://m-ap.net/our-home/">自邸の記録を読む →</a>
+            <p style="margin-top:8px"><a href="https://m-ap.net/works/machida-renovation/">写真と図面を見る →</a></p>
+          </div>
+        </div>
+        <div class="col">
+          <h3>更新案｜現サイトをベースに調整</h3>
+          <div class="block keep">
+            <div class="label">00 ヘッダー</div>
+            <p><img src="assets/home/logo.png" alt="m-ap" style="height:28px;width:auto;display:block;margin-bottom:8px" />相談・料金・自邸・実績・ABOUT・FAQ・初回相談（維持）</p>
+          </div>
+          <div class="block keep">
+            <div class="label">01 メイン写真（同・現行HOME）</div>
+            <div class="photo"><img src="assets/home/photo-1-scaled.jpg" alt="更新案ヒーロー（同写真）" style="height:220px" /></div>
+            <p class="title">好きの「かたち」が見えてくる</p>
+            <p>中古マンション購入・リノベーションの相談（維持）</p>
+          </div>
+          <div class="block add">
+            <div class="label">06 立ち位置｜追加文＋現行写真</div>
+            <div class="photo"><img src="assets/home/photo-44-scaled-e1774107873633.jpg" alt="立ち位置" style="height:200px" /></div>
+            <p>m-apは、建築の視点から場所や暮らしの課題を考えます。住まいの購入・リノベーションは、その取り組みのひとつです。</p>
+          </div>
+          <div class="block change">
+            <div class="label">09 自邸リンク｜文言変更（写真は現行HOME）</div>
+            <div class="grid3">
+              <div class="photo"><img src="assets/home/IMG_0961-1-e1774086315763.jpg" alt="BEFORE / 解体後" /></div>
+              <div class="photo"><img src="assets/home/photo-8-scaled.jpg" alt="AFTER / 暮らし" /></div>
+              <div class="photo"><img src="assets/home/photo-13-scaled.jpg" alt="廊下" /></div>
+            </div>
+            <div class="grid3" style="margin-top:8px">
+              <div class="photo"><img src="assets/home/photo-30-scaled.jpg" alt="棚・道具" /></div>
+              <div class="photo"><img src="assets/home/photo-70-scaled.jpg" alt="窓辺" /></div>
+              <div class="photo"><img src="assets/home/photo-84-scaled.jpg" alt="コラム寄り" /></div>
+            </div>
+            <a class="cta" href="https://m-ap.net/our-home/">物件選びから暮らしまでを読む →</a>
+            <p style="margin-top:8px"><a href="https://m-ap.net/works/machida-renovation/">完成写真と改修前後の図面を見る →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="ia">
+      <h2>02｜ページのつながりを比較</h2>
+      <p class="note">既存URLとナビ順は維持。色付きページだけ調整。</p>
+      <div class="cols">
+        <div class="col">
+          <h3>現サイト</h3>
+          <div class="block keep"><p><strong>トップ /</strong><br />ヘッダーから7ページへ</p></div>
+          <div class="block keep"><p><strong>相談できること /services/</strong><br />住宅の段階別案内／末尾に住宅以外も一文</p></div>
+          <div class="block keep"><p><strong>料金と進め方 /fees/</strong><br />維持</p></div>
+          <div class="block keep"><p><strong>自邸の記録 /our-home/</strong><br />維持</p></div>
+          <div class="block keep"><p><strong>プロジェクト /works-page/</strong><br />自邸＋前職・協働</p></div>
+          <div class="block keep"><p><strong>m-apについて /about/</strong><br />住宅相談中心の紹介</p></div>
+          <div class="block keep"><p><strong>FAQ /faq/ ・ 初回相談 /contact/</strong><br />維持</p></div>
+        </div>
+        <div class="col">
+          <h3>更新案</h3>
+          <div class="block add"><p><strong>トップ /</strong><br />全体像の短い説明＋自邸リンク文言を調整</p></div>
+          <div class="block add"><p><strong>相談できること /services/</strong><br />住宅以外の相談を独立項目に</p></div>
+          <div class="block keep"><p><strong>料金と進め方 /fees/</strong><br />維持</p></div>
+          <div class="block keep"><p><strong>自邸の記録 /our-home/</strong><br />維持</p></div>
+          <div class="block change"><p><strong>プロジェクト /works-page/</strong><br />自邸の竣工年月を統一（2025年11月竣工）</p></div>
+          <div class="block change"><p><strong>m-apについて /about/</strong><br />冒頭に建築的な課題解決という全体像</p></div>
+          <div class="block keep"><p><strong>FAQ /faq/ ・ 初回相談 /contact/</strong><br />維持</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="sub">
+      <h2>03｜下層ページの変更部分</h2>
+      <p class="note">ABOUT・services・実績の必要箇所だけを対照。</p>
+      <div class="cols">
+        <div class="col">
+          <h3>現サイト</h3>
+          <div class="block keep">
+            <div class="label">A /about/</div>
+            <p class="title">物件・お金・設計を、ひとつの住まいとして考える。</p>
+            <p>自邸経験・資格・5つの大切にすること。</p>
+          </div>
+          <div class="block keep">
+            <div class="label">B /services/</div>
+            <p>探す前 → 買う前 → 設計 → 工事</p>
+            <p>末尾：住宅以外のご相談も、初回に対応できる範囲を確認します。</p>
+          </div>
+          <div class="block keep">
+            <div class="label">C 実績</div>
+            <p>東京・町田 自邸リノベーション／住宅・約70㎡／<strong>2024</strong></p>
+          </div>
+        </div>
+        <div class="col">
+          <h3>更新案</h3>
+          <div class="block change">
+            <div class="label">A /about/｜冒頭変更</div>
+            <p class="title">建築の視点から、場所とその使い方を考える。</p>
+          </div>
+          <div class="block add">
+            <div class="label">A /about/｜追加文</div>
+            <p>m-apは、人の思いや場所の条件を読み解き、課題を整理して、具体的なかたちにつなげます。住まい、働く場所、既存建物の活用など、何をつくるかが決まる前から一緒に考えます。</p>
+          </div>
+          <div class="block add">
+            <div class="label">B /services/｜独立項目</div>
+            <p><strong>住まい以外のことも。</strong><br />オフィスや店舗の改修、既存建物の活用などもご相談ください。実現したいことや、今困っていることから、対応できる範囲を一緒に整理します。</p>
+          </div>
+          <div class="block change">
+            <div class="label">C 実績｜事実更新</div>
+            <p>東京・町田 自邸リノベーション／住宅・約70㎡／<strong>2025年11月竣工</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="assets">
+      <h2>元ファイル・関連リンク</h2>
+      <div class="links">
+        <p>draw.io（Slack回収版・3ページ）： <a href="assets/m-ap_current-vs-update.drawio">m-ap_current-vs-update.drawio</a></p>
+        <p>Canva（左右比較カンプ）： <a href="https://canva.link/xghwlik5tai29xy">https://canva.link/xghwlik5tai29xy</a></p>
+        <p>Canva（初回たたき台）： <a href="https://canva.link/vs370v2cdlav9cv">https://canva.link/vs370v2cdlav9cv</a></p>
+        <p>本番： <a href="https://m-ap.net/">https://m-ap.net/</a></p>
+        <p>Slackスレッド： #m-ap（2026-10-10「いまのホームページをベースにチューニング」）</p>
+        <p>Notion： <a href="https://app.notion.com/p/3f65b087d21f81b3810ce4d0d0338431">WF・デザインカンプたたき台</a></p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
