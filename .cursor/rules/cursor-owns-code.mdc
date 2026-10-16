@@ -21,6 +21,13 @@ alwaysApply: true
 - エージェントは成果を Notion（または repo の技術正本）へ、連絡は Slack へ。経緯・判断理由の記録本文は Obsidian 向けに分け、Notion/Slack にログを溜めない
 - Obsidian へ直接書けないときは、記録用の短い文を依頼元または mari へ渡し、Obsidian 保存を依頼する。Slack/Notion に記録本文を代替保存しない
 
+## Slack（mari と Cursor のみ）
+
+- チャンネルで名義返信できるのは mari と Cursor だけ、を前提にする
+- 個人 Grok Bot へのチャンネル中継・同じスレッド復帰は試みない。Team Bot / 追加課金が未承認ならその経路は使わない
+- Slack の実装依頼は `@Cursor` で受ける。Bot への実装指示は Slack 外（Bot アプリ → Cloud Agents）と扱う
+- Bot の結果を Slack に出す必要があれば、run/PR リンクを短く返すか、mari に1行共有を依頼する
+
 ## 原典
 
 - 結論が一次資料に依存するときは、引用された出典を開く

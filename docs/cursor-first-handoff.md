@@ -16,6 +16,32 @@ Bot への適用は、統括（mari）または本人が **個別に** Remember 
 
 このファイル（repo）は Cursor 受け側の技術正本。運用の**成果物**は Notion に置き、**記録**は Obsidian、**連絡**は Slack。
 
+## Slack 運用（現状の制約）
+
+`#home_top` などチャンネルで **自分の名義で返せるのは mari と Cursor だけ**。  
+個人 Grok Bot はチャンネルスレッドから他 Bot へ渡せない。返信を同じスレッドに戻す公式経路は Team Bot 接続時のみ。Team Bot / 追加契約は、本人が課金・権限を承認するまで前提にしない。
+
+### 誰がどこで動くか
+
+| 場所 | 動かす相手 | やること |
+|--|--|--|
+| **Slack** | 本人・mari・Cursor | 連絡共有。実装は `@Cursor`。部署 Bot をスレッドに呼ばない |
+| **Grok Bot アプリ / DM / グループ** | 各 Bot | 運用・定期・専門実務。Slack 名義での返信は期待しない |
+| **Cloud Agents** | Cursor | 調査・実装・テスト・PR。Bot からも直接起動してよい |
+
+### 流れ（これが基本）
+
+1. **Slack に来た実装** → mari または本人が `@Cursor` → Cloud Agent がスレッドに要約・PR  
+2. **Bot 側で実装が必要** → Bot は Slack を経由せず **Cloud Agents を直接起動** → run/PR URL を Bot チャットへ。Slack に出す必要があれば **mari が1行で共有**  
+3. **Bot の作業結果をチームに見せる** → 成果物は Notion、連絡は Slack（mari 経由）。Bot 本人を Slack に立たせない  
+4. **Cursor が Bot に仕事を振る** → Slack チャンネルからはしない。必要なら本人/mari が Bot アプリ側へ指示
+
+### Slack でやらないこと
+
+- 個人 Grok Bot を `@` して実装や中継を期待する  
+- Cursor に「Slack から Alfred / try へ渡して同じスレッドに戻す」を頼む  
+- Team Bot 未接続のまま「各 Bot が社員のように Slack 返信」する前提で設計する  
+
 ## 判定（15秒）
 
 次のいずれかに当てはまる作業は、Bot 自身で長くやらず **すぐ Cursor へ渡す**。
@@ -60,7 +86,8 @@ PRまで進めて。進捗はスレッドに要約だけ。
 
 ```text
 Remember（技術作業）:
-- コード・テスト・PR・実装計画が必要なら、自分で長く書かず Cursor Cloud Agents（または Slack の @Cursor）へ委任する
+- コード・テスト・PR・実装計画が必要なら、自分で長く書かず Cursor Cloud Agents へ直接委任する
+- Slack チャンネルでは自分が名義返信できない前提。実装の Slack 共有が必要なら run/PR URL を mari または本人へ渡し、mari が Slack に1行出す
 - 委任文には必ず含める: 目的 / 受け入れ条件 / 対象repoまたはリンク / 禁止（Skill固定文・Routine・Bot配布・課金・権限）
 - 委任したら run URL または PR URL を待ち、依頼元へ要約だけ返す
 - 同じタスクの既存 Cloud Agent run があれば新規起動せず接続する
