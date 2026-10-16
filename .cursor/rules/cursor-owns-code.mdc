@@ -15,6 +15,12 @@ alwaysApply: true
 - Grok Bot が Cloud Agents を起動してきた場合は、その run をコード担当として完遂する。Bot 側にコーディングを戻さない
 - 同じタスクの既存 run・ブランチ・PR があれば接続する。Bot の再依頼だけで新規実装を並行起動しない
 
+## 置き場
+
+- Obsidian は記録、Notion は成果物、Slack は連絡共有
+- エージェントは成果を Notion（または repo の技術正本）へ、連絡は Slack へ。経緯・判断理由の記録本文は Obsidian 向けに分け、Notion/Slack にログを溜めない
+- Obsidian へ直接書けないときは、記録用の短い文を依頼元または mari へ渡し、Obsidian 保存を依頼する。Slack/Notion に記録本文を代替保存しない
+
 ## 原典
 
 - 結論が一次資料に依存するときは、引用された出典を開く

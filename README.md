@@ -8,6 +8,12 @@ Cursor Cloud Agent と Slack の連携を確認するためのスターターリ
 - **受付・判断・振り分け** → mari
 - **運用・定期・常駐** → Grok Bot（実装が必要なら Cloud Agents へ委任）
 
+## 置き場
+
+- **Obsidian** … 記録
+- **Notion** … 成果物
+- **Slack** … 連絡共有
+
 Bot と mari が Cursor を優先するための指示正本:
 
 - [docs/cursor-first-handoff.md](docs/cursor-first-handoff.md)
